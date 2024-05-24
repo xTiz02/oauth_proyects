@@ -1,0 +1,43 @@
+server:
+  port: 8085
+#spring:
+ # security:
+  #  oauth2:
+    #  authorizationserver:
+   #    issuer: http://auth-server:9000
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: id
+            client-secret: secret
+            scope:
+              - email
+              - profile
+              - address
+              - phone
+
+            authorization-grant-type: authorization_code
+            client-name: Google
+        provider:
+          google:
+            authorization-uri: https://accounts.google.com/o/oauth2/auth
+            token-uri: https://accounts.google.com/o/oauth2/token
+            user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
+            user-name-attribute: email
+            jwk-set-uri: https://www.googleapis.com/oauth2/v3/certs
+            issuer-uri: https://accounts.google.com
+
+
+#http://127.0.0.1:9000/login/oauth2/code/messaging-client-oidc
+#
+#http://127.0.0.1:9000/authorized
+#
+#http://127.0.0.1:9000/index
+#
+#http://localhost:9000/login/oauth2/code/google-idp
+#
+#https://oauthdebugger.com/debug
